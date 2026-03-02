@@ -3,7 +3,7 @@ random number from 1 to 3
 if 1, var = "rock"..
 
 */
-
+console.log("teste")
 function getComputerChoice(){
     let compOpt 
     let RandNum = Math.floor((Math.random() * 3) +1) 
