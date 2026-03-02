@@ -5,22 +5,45 @@ if 1, var = "rock"..
 */
 
 function getComputerChoice(){
-    let opt 
+    let compOpt 
     let RandNum = Math.floor((Math.random() * 3) +1) 
     switch(RandNum){
         case 1: 
-        opt = "Rock";
+        compOpt = "Rock";
         break;
 
         case 2:
-        opt = "Paper";
+        compOpt = "Paper";
         break;
 
         case 3:
-        opt = "Scissors";
+        compOpt = "Scissors";
         break;
     }
-    console.log(opt)
+    return compOpt
+}
+
+function getUserChoice(){
+    let userOpt = prompt("Digite Rock, Paper or Scissors").toLowerCase()
+    return userOpt
+
 }
 
 getComputerChoice()
+getUserChoice()
+
+function RPS(){
+    let userOpt = getUserChoice ()
+    let compOpt = getComputerChoice()
+
+    if (userOpt == compOpt.toLowerCase()){
+        console.log( "Empate!")
+    }
+}
+
+/* 
+    Get computer choice in a var
+    get user choice in a ver
+    create a function to compare them and see who won
+
+*/
