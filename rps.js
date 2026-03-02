@@ -3,8 +3,7 @@ random number from 1 to 3
 if 1, var = "rock"..
 
 */
-const prompt = require("prompt-sync")()
-console.log("tee")
+// const prompt = require("prompt-sync")()
 function getComputerChoice(){
     let compOpt 
     let RandNum = Math.floor((Math.random() * 3) +1) 
@@ -35,14 +34,30 @@ function RPS(){
     let compOpt = getComputerChoice().toLowerCase()
 
     if (userOpt == compOpt){
+        console.log(`You: ${userOpt}. Computer: ${compOpt}`)
         console.log( "Empate!")
-    }else if (userOpt == "rock" || compOpt == "paper"){
+    }else if (userOpt == "rock" && compOpt == "paper"){
+      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
       console.log("You lost")
-    }else if (userOpt == "rock" || compOpt == "scissors"){
+    }else if (userOpt == "rock" && compOpt == "scissors"){
+      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+      console.log("You Win!")
+    }else if (userOpt == "paper" && compOpt == "scissors"){
+      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
       console.log("You lost")
+    }else if (userOpt == "paper" && compOpt == "rock"){
+      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+      console.log("You Win!")
+    }else if (userOpt == "scissors" && compOpt == "rock"){
+      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+      console.log("You lose!")
     }
+    else if (userOpt == "scissors" && compOpt == "paper"){
+      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+      console.log("You Win!")
     }
 }
+
 
 /* 
     Get computer choice in a var
