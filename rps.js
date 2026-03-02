@@ -3,7 +3,8 @@ random number from 1 to 3
 if 1, var = "rock"..
 
 */
-console.log("teste")
+const prompt = require("prompt-sync")()
+console.log("tee")
 function getComputerChoice(){
     let compOpt 
     let RandNum = Math.floor((Math.random() * 3) +1) 
@@ -24,20 +25,22 @@ function getComputerChoice(){
 }
 
 function getUserChoice(){
-    let userOpt = prompt("Digite Rock, Paper or Scissors").toLowerCase()
+    let userOpt = prompt("Digite Rock, Paper or Scissors: ").toLowerCase()
     return userOpt
 
 }
-
-getComputerChoice()
-getUserChoice()
-
+RPS()
 function RPS(){
     let userOpt = getUserChoice ()
-    let compOpt = getComputerChoice()
+    let compOpt = getComputerChoice().toLowerCase()
 
-    if (userOpt == compOpt.toLowerCase()){
+    if (userOpt == compOpt){
         console.log( "Empate!")
+    }else if (userOpt == "rock" || compOpt == "paper"){
+      console.log("You lost")
+    }else if (userOpt == "rock" || compOpt == "scissors"){
+      console.log("You lost")
+    }
     }
 }
 
