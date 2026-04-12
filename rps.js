@@ -28,16 +28,31 @@ function getComputerChoice(){
     return compOpt
 }
 
-let input = document.querySelector("#userOpt")
-input.addEventListener("keydown", (e) => {
-    if (e.key == "Enter"){
-        input.focus()
-        humanSelection = input.value
-        input.value = ""
-        playRound(humanSelection, getComputerChoice())
-    }
-})
+let rockBtn = document.querySelector("#rock") 
+let paperBtn = document.querySelector("#paper") 
+let scissorsBtn = document.querySelector("#scissors") 
 
+function humanChoice(e){
+    humanSelection = e.target.id 
+    playRound(humanSelection, getComputerChoice())
+}
+
+rockBtn.addEventListener("click", humanChoice)
+paperBtn.addEventListener("click", humanChoice)
+scissorsBtn.addEventListener("click", humanChoice)
+
+
+
+// let input = document.querySelector("#userOpt")
+// input.addEventListener("keydown", (e) => {
+//     if (e.key == "Enter"){
+//         input.focus()
+//         humanSelection = input.value
+//         input.value = ""
+//         playRound(humanSelection, getComputerChoice())
+//     }
+// })
+let div = document.createElement("div")
 function playRound(userOpt, compOpt){
         
         if (userOpt == compOpt){
