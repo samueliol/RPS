@@ -4,60 +4,97 @@ if 1, var = "rock"..
 
 */
 // const prompt = require("prompt-sync")()
+
+let humanScore = 0
+let computerScore = 0
+let rodadas = 0
+let humanSelection = ""
 function getComputerChoice(){
     let compOpt 
     let RandNum = Math.floor((Math.random() * 3) +1) 
     switch(RandNum){
         case 1: 
-        compOpt = "Rock";
+        compOpt = "rock";
         break;
 
         case 2:
-        compOpt = "Paper";
+        compOpt = "paper";
         break;
 
         case 3:
-        compOpt = "Scissors";
+        compOpt = "scissors";
         break;
     }
     return compOpt
 }
 
-function getUserChoice(){
-    let userOpt = prompt("Digite Rock, Paper or Scissors: ").toLowerCase()
-    return userOpt
-
-}
-RPS()
-function RPS(){
-    let userOpt = getUserChoice ()
-    let compOpt = getComputerChoice().toLowerCase()
-
-    if (userOpt == compOpt){
-        console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-        console.log( "Empate!")
-    }else if (userOpt == "rock" && compOpt == "paper"){
-      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-      console.log("You lost")
-    }else if (userOpt == "rock" && compOpt == "scissors"){
-      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-      console.log("You Win!")
-    }else if (userOpt == "paper" && compOpt == "scissors"){
-      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-      console.log("You lost")
-    }else if (userOpt == "paper" && compOpt == "rock"){
-      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-      console.log("You Win!")
-    }else if (userOpt == "scissors" && compOpt == "rock"){
-      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-      console.log("You lose!")
+let input = document.querySelector("#userOpt")
+input.addEventListener("keydown", (e) => {
+    if (e.key == "Enter"){
+        input.focus()
+        humanSelection = input.value
+        input.value = ""
+        playRound(humanSelection, getComputerChoice())
     }
-    else if (userOpt == "scissors" && compOpt == "paper"){
-      console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-      console.log("You Win!")
+})
+
+function playRound(userOpt, compOpt){
+        
+        if (userOpt == compOpt){
+            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+            console.log( "Empate!")
+            rodadas++
+
+        }else if (userOpt == "rock" && compOpt == "paper"){
+            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+            console.log("You lost")
+            rodadas++
+            computerScore++
+
+        }else if (userOpt == "rock" && compOpt == "scissors"){
+            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+            console.log("You Win!")
+            rodadas++
+            humanScore++
+        }else if (userOpt == "paper" && compOpt == "scissors"){
+            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+            console.log("You lost")
+            rodadas++
+            computerScore++
+        }else if (userOpt == "paper" && compOpt == "rock"){
+            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+            console.log("You Win!")
+            rodadas++
+            humanScore++
+        }else if (userOpt == "scissors" && compOpt == "rock"){
+            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+            console.log("You lose!")
+            rodadas++
+            computerScore++
+        }
+        else if (userOpt == "scissors" && compOpt == "paper"){
+            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
+            console.log("You Win!")
+            rodadas++
+            humanScore++
+        }
+
+    if (rodadas == 3){
+            endGame()
+        }
+}
+function endGame(){
+    if (humanScore > computerScore){
+        console.log(`End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins.`)
+        console.log("You WON!")
+    }else if (humanScore == computerScore){
+        console.log(`End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins.`)
+        console.log("Its a DRAW!")
+    }else{
+        console.log(`End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins.`)
+        console.log("You LOST!")
     }
 }
-
 
 /* 
     Get computer choice in a var
