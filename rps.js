@@ -52,63 +52,71 @@ scissorsBtn.addEventListener("click", humanChoice)
 //         playRound(humanSelection, getComputerChoice())
 //     }
 // })
-let div = document.createElement("div")
+let divRes = document.querySelector("#results")
+let para = document.createElement("p")
+
+
 function playRound(userOpt, compOpt){
         
         if (userOpt == compOpt){
-            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-            console.log( "Empate!")
+            para.textContent = `You: ${userOpt}. Computer: ${compOpt}. "Empate!"`
+            divRes.appendChild(para)
             rodadas++
 
         }else if (userOpt == "rock" && compOpt == "paper"){
-            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-            console.log("You lost")
+            para.textContent = `You: ${userOpt}. Computer: ${compOpt}. "You Lost!"`
+            divRes.appendChild(para)
             rodadas++
             computerScore++
 
         }else if (userOpt == "rock" && compOpt == "scissors"){
-            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-            console.log("You Win!")
+            para.textContent = `You: ${userOpt}. Computer: ${compOpt}. "You Win!"`
+            divRes.appendChild(para)
             rodadas++
             humanScore++
         }else if (userOpt == "paper" && compOpt == "scissors"){
-            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-            console.log("You lost")
+            para.textContent = `You: ${userOpt}. Computer: ${compOpt}. "You Lost!"`
+            divRes.appendChild(para)
             rodadas++
             computerScore++
         }else if (userOpt == "paper" && compOpt == "rock"){
-            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-            console.log("You Win!")
+            para.textContent = `You: ${userOpt}. Computer: ${compOpt}. "You Win!"`
+            divRes.appendChild(para)
             rodadas++
             humanScore++
         }else if (userOpt == "scissors" && compOpt == "rock"){
-            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-            console.log("You lose!")
+            para.textContent = `You: ${userOpt}. Computer: ${compOpt}. "You Lost!"`
+            divRes.appendChild(para)
             rodadas++
             computerScore++
         }
         else if (userOpt == "scissors" && compOpt == "paper"){
-            console.log(`You: ${userOpt}. Computer: ${compOpt}`)
-            console.log("You Win!")
+            para.textContent = `You: ${userOpt}. Computer: ${compOpt}. "You Win!"`
+            divRes.appendChild(para)
             rodadas++
             humanScore++
         }
 
-    if (rodadas == 3){
+    if (humanScore == 5 || computerScore == 5){
             endGame()
         }
 }
 function endGame(){
+    let para = document.createElement("p")
     if (humanScore > computerScore){
-        console.log(`End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins.`)
-        console.log("You WON!")
+        para.textContent = `End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins. "You WON!"`
+        divRes.appendChild(para)
     }else if (humanScore == computerScore){
-        console.log(`End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins.`)
-        console.log("Its a DRAW!")
+        para.textContent = `End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins. "Its a DRAW!"`
+        divRes.appendChild(para)
+
     }else{
-        console.log(`End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins.`)
-        console.log("You LOST!")
+        para.textContent = `End of the game! You: ${humanScore} wins. Computer: ${computerScore} wins. "You LOST!"`
+        divRes.appendChild(para)
+
     }
+    humanScore = 0
+    computerScore = 0
 }
 
 /* 
